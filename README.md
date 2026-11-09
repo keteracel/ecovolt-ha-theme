@@ -14,7 +14,7 @@ Brand theme for Home Assistant installs by EcoVolt Renewables: brand green, navy
 |---|---|
 | `themes/ecovolt.yaml` | The theme. Sets colours, font, card style and energy colours (solar is amber, battery green, grid navy) |
 | `www/ecovolt/ecovolt-fonts.js` | Loads the self-hosted Montserrat font, so it works without internet access |
-| `www/ecovolt/ecovolt-logo.svg`, `-white.svg` | Logo, tightly cropped (colour for light backgrounds, white with the "renewables" line for dark) |
+| `www/ecovolt/ecovolt-logo.svg`, `-white.svg` | Logo, tightly cropped: colour version for light backgrounds (green "ecovolt", navy "renewables"), white version for dark |
 | `www/ecovolt/ecovolt-banner.svg`, `-white.svg` | Same logos with padding, for dashboard header cards |
 | `www/ecovolt/ecovolt-mark.svg` | Pin icon only, square |
 | `examples/dashboard-header.yaml` | Logo header card that switches logo with light/dark mode |
