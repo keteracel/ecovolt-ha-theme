@@ -1,0 +1,26 @@
+# EcoVolt additions to Home Assistant's configuration.yaml.
+# Merge these into the existing file. If it already has a `frontend:` or
+# `shell_command:` section, add these lines under it rather than adding a second one.
+
+frontend:
+  themes: !include_dir_merge_named themes
+  extra_module_url:
+    # Bump ?v= when the font files change (browsers cache /local for 31 days).
+    - /local/ecovolt/ecovolt-fonts.js?v=1
+
+shell_command:
+  # Downloads the latest EcoVolt font and logos from GitHub into /config/www/ecovolt.
+  # Run it from Developer tools → Actions (works remotely). The old files are only
+  # replaced once the download has succeeded.
+  ecovolt_update_assets: >-
+    sh -c 'set -e;
+    t=$(mktemp -d);
+    curl -fsSL --max-time 45 https://codeload.github.com/keteracel/ecovolt-ha-theme/tar.gz/refs/heads/main | tar -xzf - -C "$t";
+    test -f "$t/ecovolt-ha-theme-main/www/ecovolt/ecovolt-fonts.js";
+    mkdir -p /config/www;
+    rm -rf /config/www/ecovolt.new;
+    cp -R "$t/ecovolt-ha-theme-main/www/ecovolt" /config/www/ecovolt.new;
+    rm -rf /config/www/ecovolt;
+    mv /config/www/ecovolt.new /config/www/ecovolt;
+    rm -rf "$t";
+    echo "EcoVolt assets updated: $(ls /config/www/ecovolt | tr "\n" " ")"'

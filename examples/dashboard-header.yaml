@@ -1,8 +1,9 @@
 # EcoVolt logo header that swaps to the white logo in dark mode.
-# Needs www/ecovolt/ copied to /config/www/ecovolt/ (see README).
+# Needs the EcoVolt assets in /config/www/ecovolt/ (see INSTALL.md).
+# Browsers cache these files for up to 31 days: bump ?v= when the logo changes.
 # picture-elements is the built-in card that supports dark_mode_image; no elements needed.
 type: picture-elements
-image: /local/ecovolt/ecovolt-banner.svg
-dark_mode_image: /local/ecovolt/ecovolt-banner-white.svg
+image: /local/ecovolt/ecovolt-banner.svg?v=1
+dark_mode_image: /local/ecovolt/ecovolt-banner-white.svg?v=1
 alt_text: EcoVolt Renewables
 elements: []

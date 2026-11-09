@@ -78,6 +78,7 @@ for (const mode of ['light', 'dark']) {
       primary: v('--primary-color'), body: v('--ha-font-family-body'), solar: v('--energy-solar-color'),
       fontLoaded: document.fonts.check('16px Montserrat'),
       fontStyle: !!document.getElementById('ecovolt-fonts'),
+      fontVersioned: (document.getElementById('ecovolt-fonts')?.textContent ?? '').includes('.woff2?v=1'),
       bodyFont: getComputedStyle(document.body).fontFamily,
       logo: img?.getAttribute('src') ?? null,
       gaugeBg: gauge?.shadowRoot?.querySelector('ha-card')?.style.backgroundColor ?? null,
@@ -86,6 +87,7 @@ for (const mode of ['light', 'dark']) {
   check(r.primary === '#009f17', `--primary-color is brand green (got ${r.primary})`);
   check(r.body.startsWith('Montserrat'), `--ha-font-family-body starts with Montserrat (got ${r.body})`);
   check(r.fontStyle, 'ecovolt-fonts.js registered @font-face');
+  check(r.fontVersioned, 'font files carry the loader\'s ?v= version');
   check(r.fontLoaded, 'Montserrat font file loaded');
   check(r.bodyFont.includes('Montserrat'), `body renders in Montserrat (got ${r.bodyFont})`);
   check(r.solar === '#ffbb00', `--energy-solar-color is amber (got ${r.solar})`);

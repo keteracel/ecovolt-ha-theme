@@ -3,15 +3,18 @@
 //
 //   frontend:
 //     extra_module_url:
-//       - /local/ecovolt/ecovolt-fonts.js
+//       - /local/ecovolt/ecovolt-fonts.js?v=1
 //
 // The theme then picks it up through `ha-font-family-body: Montserrat, ...`.
 // Fonts are served from /local, so installs without internet access still work.
+// HA lets browsers cache /local files for 31 days: bump ?v= when the fonts change,
+// and the same ?v= is passed on to the font files so they refresh too.
 
 const STYLE_ID = 'ecovolt-fonts';
 
 if (!document.getElementById(STYLE_ID)) {
   const base = new URL('./fonts/', import.meta.url).href;
+  const version = new URL(import.meta.url).search; // e.g. "?v=1", or "" if unversioned
 
   const face = (file, range) => `
 @font-face {
@@ -19,7 +22,7 @@ if (!document.getElementById(STYLE_ID)) {
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url('${base}${file}') format('woff2-variations'), url('${base}${file}') format('woff2');
+  src: url('${base}${file}${version}') format('woff2-variations'), url('${base}${file}${version}') format('woff2');
   unicode-range: ${range};
 }`;
 
