@@ -1,0 +1,84 @@
+# Preview dashboard for the EcoVolt theme (dev only). Uses entities from HA's demo integration.
+title: EcoVolt demo
+views:
+  - title: Home
+    path: home
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: picture-elements
+            image: /local/ecovolt/ecovolt-banner.svg
+            dark_mode_image: /local/ecovolt/ecovolt-banner-white.svg
+            alt_text: EcoVolt Renewables
+            elements: []
+            grid_options: { columns: full }
+          - type: heading
+            heading: System
+          - type: tile
+            entity: climate.heatpump
+            name: Heat pump
+            features: [{ type: target-temperature }]
+            grid_options: { columns: full }
+          - type: tile
+            entity: switch.decorative_lights
+            name: Solar diverter
+          - type: tile
+            entity: switch.ac
+            name: Battery charging
+          - type: tile
+            entity: sensor.power_consumption
+            name: House load
+          - type: tile
+            entity: sensor.outside_temperature
+            name: Outside
+      - type: grid
+        cards:
+          - type: heading
+            heading: Paul's cards
+          - type: custom:paul-gauge-card
+            entity: sensor.power_consumption
+            name: House load
+            color_mode: gradient
+            levels:
+              - { min: 0, max: 500, icon: mdi:flash-outline, color: 'var(--success-color, #4caf50)', label: Low }
+              - { min: 500, max: 2000, icon: mdi:flash, color: 'var(--warning-color, #ff9800)', label: Medium }
+              - { min: 2000, max: 5000, icon: mdi:flash-alert, color: 'var(--error-color, #f44336)', label: High }
+            grid_options: { columns: 6 }
+          - type: custom:paul-gauge-card
+            entity: sensor.outside_temperature
+            name: Outside
+            levels:
+              - { min: -20, max: 10, icon: mdi:thermometer-low, color: 'var(--info-color, #2196f3)', label: Cold }
+              - { min: 10, max: 25, icon: mdi:thermometer, color: 'var(--primary-color, #4caf50)', label: Mild }
+              - { min: 25, max: 50, icon: mdi:thermometer-high, color: 'var(--error-color, #f44336)', label: Hot }
+            grid_options: { columns: 6 }
+          - type: custom:paul-flow-card
+            title: Heating
+            height: 220
+            cell_size: 110
+            nodes:
+              - { id: hp, type: heat_pump, label: Heat pump, position: [0, 0], entities: { state: switch.decorative_lights } }
+              - { id: pump, type: pump, label: Pump, position: [1, 0], entities: { state: switch.decorative_lights } }
+              - { id: tank, type: tank, label: Tank, position: [2, 0], entities: { temperature: sensor.outside_temperature } }
+              - { id: zone, type: zone, label: Lounge, position: [3, 0], entities: { climate: climate.heatpump, valve: switch.ac } }
+            edges:
+              - { from: hp, to: pump }
+              - { from: pump, to: tank }
+              - { from: tank, to: zone }
+            grid_options: { columns: full }
+      - type: grid
+        cards:
+          - type: heading
+            heading: Home
+          - type: thermostat
+            entity: climate.heatpump
+            grid_options: { columns: full }
+          - type: entities
+            title: Lights
+            entities: [light.kitchen_lights, light.ceiling_lights, light.bed_light]
+            grid_options: { columns: full }
+          - type: weather-forecast
+            entity: weather.demo_weather_south
+            grid_options: { columns: full }

@@ -1,0 +1,8 @@
+# EcoVolt logo header that swaps to the white logo in dark mode.
+# Needs www/ecovolt/ copied to /config/www/ecovolt/ (see README).
+# picture-elements is the built-in card that supports dark_mode_image; no elements needed.
+type: picture-elements
+image: /local/ecovolt/ecovolt-banner.svg
+dark_mode_image: /local/ecovolt/ecovolt-banner-white.svg
+alt_text: EcoVolt Renewables
+elements: []

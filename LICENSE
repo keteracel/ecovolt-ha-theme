@@ -1,0 +1,27 @@
+Copyright (c) 2026 keteracel. All rights reserved.
+
+This repository is public so that authorised Home Assistant installations can
+install and update it (for example through HACS). Being able to see or download
+it does not give you permission to use it.
+
+NO LICENCE IS GRANTED for any use of this repository or its contents, including
+using, copying, modifying, merging, publishing, distributing, sublicensing or
+selling them, except with prior written permission from the copyright holder.
+To request permission, open an issue on this repository.
+
+EcoVolt name and logos
+----------------------
+The EcoVolt Renewables name and the logo files in www/ecovolt/ (*.svg) are
+brand marks of EcoVolt Renewables. They are used here with EcoVolt Renewables'
+permission, only for EcoVolt customer installations. No right to use them
+is granted to anyone else.
+
+Third-party components
+----------------------
+The Montserrat font files in www/ecovolt/fonts/ are NOT covered by the terms
+above. They are licensed under the SIL Open Font License 1.1, which is included
+in www/ecovolt/fonts/OFL.txt (Copyright 2011 The Montserrat Project Authors).
+
+THE CONTENTS OF THIS REPOSITORY ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR
+ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM THEIR USE.

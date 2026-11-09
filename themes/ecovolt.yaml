@@ -1,0 +1,107 @@
+# EcoVolt Renewables theme for Home Assistant
+# Brand: green #009f17, navy #241b66, amber #ffbb00, text #444555, Montserrat.
+# Font: load /local/ecovolt/ecovolt-fonts.js via frontend.extra_module_url (see README).
+# Contrast is checked by scripts/check-contrast.py, so re-run it after changing colours.
+
+EcoVolt:
+  # ---------- Typography ----------
+  ha-font-family-body: "Montserrat, Roboto, Noto, sans-serif"
+  ha-font-family-heading: "Montserrat, Roboto, Noto, sans-serif"
+  ha-font-weight-heading: "700"
+  ha-card-header-font-family: "Montserrat, Roboto, Noto, sans-serif"
+
+  # ---------- Brand green scale (step 40 = brand green) ----------
+  ha-color-primary-05: "#011a02"
+  ha-color-primary-10: "#033305"
+  ha-color-primary-20: "#07480b"
+  ha-color-primary-30: "#0e7215"
+  ha-color-primary-40: "#009f17"
+  ha-color-primary-50: "#2cce35"
+  ha-color-primary-60: "#44da48"
+  ha-color-primary-70: "#80e27e"
+  ha-color-primary-80: "#bbeeb8"
+  ha-color-primary-90: "#e0f7df"
+  ha-color-primary-95: "#effbef"
+
+  primary-color: "#009f17"
+  light-primary-color: "#bbeeb8"
+  dark-primary-color: "#028813"
+  darker-primary-color: "#0e7215"
+  text-primary-color: "#ffffff"
+  accent-color: "#ffbb00"
+  text-accent-color: "#212121"
+
+  # Filled primary buttons carry white text: use a darker green so it passes 4.5:1
+  ha-color-fill-primary-loud-resting: "#028813"
+  ha-color-fill-primary-loud-hover: "#0e7215"
+  ha-color-fill-primary-loud-active: "#028813"
+
+  # ---------- Controls ----------
+  slider-color: "#009f17"
+  slider-secondary-color: "#bbeeb8"
+  state-active-color: "#ffbb00"
+
+  # ---------- Energy (solar = amber, battery = greens, grid = navy) ----------
+  energy-solar-color: "#ffbb00"
+  energy-battery-out-color: "#009f17"
+  energy-battery-in-color: "#80e27e"
+  energy-non-fossil-color: "#0e7215"
+  energy-gas-color: "#8e021b"
+  energy-water-color: "#00bcd4"
+
+  # ---------- Cards ----------
+  ha-card-border-radius: "16px"
+
+  modes:
+    light:
+      primary-background-color: "#f4f5f7"
+      secondary-background-color: "#e9eaef"
+      card-background-color: "#ffffff"
+      primary-text-color: "#444555"
+      secondary-text-color: "#676879"
+      ha-card-header-color: "#241b66"
+      divider-color: "rgba(36, 27, 102, 0.10)"
+
+      app-header-background-color: "#241b66"
+      app-header-text-color: "#ffffff"
+      sidebar-background-color: "#ffffff"
+      sidebar-text-color: "#444555"
+      sidebar-icon-color: "#676879"
+      sidebar-selected-text-color: "#028813"
+      sidebar-selected-icon-color: "#028813"
+
+      # Green text on white or pale green must pass 4.5:1
+      ha-color-text-link: "#028813"
+      ha-color-on-primary-quiet: "#0e7215"
+      ha-color-on-primary-normal: "#0e7215"
+
+      ha-card-border-width: "0"
+      ha-card-box-shadow: "0 2px 12px rgba(36, 27, 102, 0.08)"
+
+      energy-grid-consumption-color: "#545691"
+      energy-grid-return-color: "#9da1ff"
+
+    dark:
+      primary-background-color: "#111224"
+      secondary-background-color: "#242543"
+      card-background-color: "#181a33"
+      clear-background-color: "#111224"
+      primary-text-color: "#e6e7f0"
+      secondary-text-color: "#a3a5c0"
+      ha-card-header-color: "#e6e7f0"
+      divider-color: "rgba(227, 228, 240, 0.12)"
+
+      app-header-background-color: "#241b66"
+      app-header-text-color: "#ffffff"
+      sidebar-background-color: "#181a33"
+      sidebar-text-color: "#e6e7f0"
+      sidebar-icon-color: "#a3a5c0"
+      sidebar-selected-text-color: "#44da48"
+      sidebar-selected-icon-color: "#44da48"
+
+      ha-card-border-width: "1px"
+      ha-card-border-color: "rgba(227, 228, 240, 0.08)"
+      ha-card-box-shadow: "none"
+
+      energy-grid-consumption-color: "#7f82d6"
+      energy-grid-return-color: "#bcc1fe"

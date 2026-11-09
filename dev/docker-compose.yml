@@ -1,0 +1,37 @@
+# Throwaway Home Assistant for previewing the EcoVolt theme.
+#   make dev          start HA on http://localhost:8123 (user: dev / password: dev-password)
+#   make screenshots  onboard, log in and capture light/dark screenshots into docs/screenshots
+#   make dev-down     stop and wipe it
+# Set PAULS_CARDS_JS to a built pauls-cards.js to preview those cards too.
+services:
+  homeassistant:
+    image: ghcr.io/home-assistant/home-assistant:stable
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./config/configuration.yaml:/config/configuration.yaml:ro
+      - ./config/dashboards:/config/dashboards:ro
+      - ../themes:/config/themes:ro
+      - ../www/ecovolt:/config/www/ecovolt:ro
+      - ${PAULS_CARDS_JS:-./config/empty.js}:/config/www/pauls-cards.js:ro
+    environment:
+      TZ: Europe/London
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8123/manifest.json"]
+      interval: 5s
+      retries: 60
+
+  screenshots:
+    image: mcr.microsoft.com/playwright:v1.61.1-noble
+    profiles: ["tools"]
+    depends_on:
+      homeassistant:
+        condition: service_healthy
+    working_dir: /dev-tools
+    environment:
+      HA_URL: http://homeassistant:8123
+      HOME: /tmp
+    volumes:
+      - ./:/dev-tools
+      - ../docs/screenshots:/out
+    command: bash -c "npm ci --silent --no-audit --no-fund && node screenshots.mjs"
