@@ -10,7 +10,7 @@ frontend:
 
 shell_command:
   # Downloads the font and logos from the latest EcoVolt release into /config/www/ecovolt.
-  # Run it from Developer tools → Actions (works remotely). The old files are only
+  # Run it from Settings → Tools → Actions (works remotely). The old files are only
   # replaced once the download has succeeded.
   ecovolt_update_assets: >-
     sh -c 'set -e;

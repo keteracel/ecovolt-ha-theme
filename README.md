@@ -28,7 +28,7 @@ In short:
 1. Install the theme from **Settings → Marketplace → Add from link** (`keteracel/ecovolt-ha-theme`, type **Theme**). This needs Home Assistant 2026.11 or later.
 2. Paste [`examples/configuration.yaml`](examples/configuration.yaml) into `configuration.yaml` with the File editor add-on, then restart.
 3. Run the **`shell_command.ecovolt_update_assets`** action to download the font and logos, then restart once more.
-4. Run `frontend.set_theme` with `name: EcoVolt`, and again with `mode: dark`.
+4. Make EcoVolt the default in light and dark mode: in **Settings → Tools → Actions**, run `frontend.set_theme` with `name: EcoVolt`, then run it again with `name: EcoVolt` and `mode: dark`.
 5. Add the logo card from [`examples/dashboard-header.yaml`](examples/dashboard-header.yaml).
 
 Updates: theme changes come through **Settings → Updates**. For font or logo changes, re-run the asset action and bump the `?v=` number.

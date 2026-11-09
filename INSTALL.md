@@ -66,21 +66,21 @@ The theme is installed to `config/themes/ecovolt/` and loads straight away, with
 
 ### 5. Check and restart
 
-Go to **Developer tools → YAML**, click **Check configuration**, and fix anything it reports. Then click **Restart → Restart Home Assistant**. The UI comes back after a minute or two.
+Go to **Settings → Tools → YAML**, click **Check configuration**, and fix anything it reports. Then click **Restart → Restart Home Assistant**. The UI comes back after a minute or two.
 
 ### 6. Download the font and logos
 
-1. Go to **Developer tools → Actions**.
+1. Go to **Settings → Tools → Actions**.
 2. Choose **Shell Command: ecovolt_update_assets** and click **Perform action**.
 3. The response should show `returncode: 0` and `EcoVolt assets v0.1.0 installed`, with the latest release number.
 
 ### 7. Restart once more
 
-On a first install only, restart again (**Developer tools → YAML → Restart**). Home Assistant only serves files from a `www` folder that existed when it started.
+On a first install only, restart again (**Settings → Tools → YAML → Restart**). Home Assistant only serves files from a `www` folder that existed when it started.
 
 ### 8. Select the theme
 
-Go to **Developer tools → Actions** and run `frontend.set_theme` twice. Switch to YAML mode with **⋮ → Edit in YAML** to paste these:
+Go to **Settings → Tools → Actions** and run `frontend.set_theme` twice. Switch the page to **YAML mode** (the button at the top) to paste these:
 
 ```yaml
 action: frontend.set_theme
@@ -130,13 +130,13 @@ Every change is published as a [release](https://github.com/keteracel/ecovolt-ha
 ### Theme changes
 
 1. Go to **Settings → Updates**, select **EcoVolt**, and install the update.
-2. Marketplace reloads themes itself, so the new colours apply on the next page load. If they don't, run the **`frontend.reload_themes`** action from **Developer tools → Actions**.
+2. Marketplace reloads themes itself, so the new colours apply on the next page load. If they don't, run the **`frontend.reload_themes`** action from **Settings → Tools → Actions**.
 
 ### Font or logo changes
 
 Install the theme update first, so the theme and assets are on the same release.
 
-1. Run **Shell Command: ecovolt_update_assets** from **Developer tools → Actions**. Check the response shows `returncode: 0` and the new release number.
+1. Run **Shell Command: ecovolt_update_assets** from **Settings → Tools → Actions**. Check the response shows `returncode: 0` and the new release number.
 2. Bump the version number so devices fetch the new files. Browsers keep `/local` files for up to 31 days, and you can't clear the cache on a customer's tablet from here.
    - **Logo changed:** edit the logo card on each dashboard and change both `?v=1` to `?v=2` (then `?v=3` next time, and so on).
    - **Font changed:** in **File editor**, open `configuration.yaml`, change `ecovolt-fonts.js?v=1` to `?v=2`, save, and restart Home Assistant.
