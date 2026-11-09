@@ -1,8 +1,8 @@
 Copyright (c) 2026 keteracel. All rights reserved.
 
 This repository is public so that authorised Home Assistant installations can
-install and update it (for example through HACS). Being able to see or download
-it does not give you permission to use it.
+install and update it (for example through Home Assistant's Marketplace). Being
+able to see or download it does not give you permission to use it.
 
 NO LICENCE IS GRANTED for any use of this repository or its contents, including
 using, copying, modifying, merging, publishing, distributing, sublicensing or

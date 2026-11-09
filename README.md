@@ -19,50 +19,21 @@ Brand theme for Home Assistant installs by EcoVolt Renewables: brand green, navy
 | `www/ecovolt/ecovolt-mark.svg` | Pin icon only, square |
 | `examples/dashboard-header.yaml` | Logo header card that switches logo with light/dark mode |
 
-## Install
+## Install and update
 
-### 1. Theme
+Written for Raspberry Pis running **Home Assistant OS**. Install on site, and after that every update happens remotely through the web UI. You never need SSH or file-share access.
 
-**With HACS:** in HACS, open the ⋮ menu, choose *Custom repositories*, and add this repo's URL with category **Theme**. Then install *EcoVolt*.
+In short:
 
-**Without HACS:** copy `themes/ecovolt.yaml` into `/config/themes/`.
+1. Install the theme from **Settings → Marketplace → Add from link** (`keteracel/ecovolt-ha-theme`, type **Theme**). This needs Home Assistant 2026.11 or later.
+2. Paste [`examples/configuration.yaml`](examples/configuration.yaml) into `configuration.yaml` with the File editor add-on, then restart.
+3. Run the **`shell_command.ecovolt_update_assets`** action to download the font and logos, then restart once more.
+4. Run `frontend.set_theme` with `name: EcoVolt`, and again with `mode: dark`.
+5. Add the logo card from [`examples/dashboard-header.yaml`](examples/dashboard-header.yaml).
 
-Either way, `configuration.yaml` needs to load themes:
+Updates: theme changes come through **Settings → Updates**. For font or logo changes, re-run the asset action and bump the `?v=` number.
 
-```yaml
-frontend:
-  themes: !include_dir_merge_named themes
-```
-
-### 2. Font and logos (one-time per install)
-
-HACS only installs the theme file, so copy `www/ecovolt/` to `/config/www/ecovolt/`. From a machine with the HA config mounted (e.g. over Samba or SSH):
-
-```sh
-make deploy HA_CONFIG=/path/to/homeassistant/config
-```
-
-Then load the font in `configuration.yaml`:
-
-```yaml
-frontend:
-  themes: !include_dir_merge_named themes
-  extra_module_url:
-    - /local/ecovolt/ecovolt-fonts.js
-```
-
-Restart Home Assistant.
-
-### 3. Select the theme
-
-- **For everyone:** run the action `frontend.set_theme` with `name: EcoVolt`, then again with `name: EcoVolt` and `mode: dark`. This makes it the default in both modes.
-- **Per user:** open *Profile*, then *Theme*, and choose *EcoVolt*.
-
-Light or dark follows the device setting unless the user picks one in their profile.
-
-### 4. Logo on dashboards
-
-Add the card from [`examples/dashboard-header.yaml`](examples/dashboard-header.yaml) to the top of a dashboard (in edit mode, use *Add card*, choose *Manual*, and paste it in).
+For the full steps, troubleshooting and removal, see the **[Installation and update guide](INSTALL.md)**.
 
 The sidebar title ("Home Assistant") can't be replaced by a theme. If a customer wants the logo there too, [custom-sidebar](https://github.com/elchininet/custom-sidebar) or card-mod can do it.
 
@@ -91,4 +62,4 @@ Use `make dev` to poke around at http://localhost:8123 (user `dev`, password `de
 
 ## Licence
 
-**Not licensed for public use.** This repo is public only so that EcoVolt installs can get it and update it through HACS. Any use needs prior written permission, see [`LICENSE`](LICENSE). The EcoVolt name and logos are EcoVolt Renewables' brand marks, used with permission. The Montserrat font files are under the SIL Open Font License, see [NOTICE.md](NOTICE.md).
+**Not licensed for public use.** This repo is public only so that EcoVolt installs can get it and update it through Home Assistant's Marketplace. Any use needs prior written permission, see [`LICENSE`](LICENSE). The EcoVolt name and logos are EcoVolt Renewables' brand marks, used with permission. The Montserrat font files are under the SIL Open Font License, see [NOTICE.md](NOTICE.md).
