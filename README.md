@@ -60,6 +60,16 @@ PAULS_CARDS_JS=/path/to/pauls-custom-cards/dist/pauls-cards.js make screenshots
 
 Use `make dev` to poke around at http://localhost:8123 (user `dev`, password `dev-password`, created by `make screenshots`), and `make dev-down` to remove it.
 
+## Releasing
+
+Customers' Pis are offered releases, not individual commits. To publish a change, run this from a clean `main`:
+
+```sh
+make release VERSION=v0.2.0 NOTES_FILE=/tmp/notes.md
+```
+
+It runs the contrast check, tags the release, and attaches `ecovolt-assets.tar.gz`, the font and logos that the `ecovolt_update_assets` action downloads. In the notes, say whether the font or logos changed. If they did, installs need the asset action and a `?v=` bump (see [Updating](INSTALL.md#updating-remotely)).
+
 ## Licence
 
 **Not licensed for public use.** This repo is public only so that EcoVolt installs can get it and update it through Home Assistant's Marketplace. Any use needs prior written permission, see [`LICENSE`](LICENSE). The EcoVolt name and logos are EcoVolt Renewables' brand marks, used with permission. The Montserrat font files are under the SIL Open Font License, see [NOTICE.md](NOTICE.md).

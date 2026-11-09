@@ -72,7 +72,7 @@ Go to **Developer tools → YAML**, click **Check configuration**, and fix anyth
 
 1. Go to **Developer tools → Actions**.
 2. Choose **Shell Command: ecovolt_update_assets** and click **Perform action**.
-3. The response should show `returncode: 0` and `EcoVolt assets updated: ecovolt-banner-white.svg … fonts`.
+3. The response should show `returncode: 0` and `EcoVolt assets v0.1.0 installed`, with the latest release number.
 
 ### 7. Restart once more
 
@@ -125,7 +125,7 @@ Hard-reload the browser (**Ctrl+Shift+R**, or **Cmd+Shift+R** on Mac), then chec
 
 Everything here works through the customer's remote address in a browser.
 
-There are no versioned releases. Marketplace offers an update whenever `main` changes, and checks this repository about every 2 days, so a change can take that long to show up. To see what changed, check the [commit history](https://github.com/keteracel/ecovolt-ha-theme/commits/main). Updates to the font and logos also show up in the [history for `www/`](https://github.com/keteracel/ecovolt-ha-theme/commits/main/www).
+Every change is published as a [release](https://github.com/keteracel/ecovolt-ha-theme/releases). Marketplace checks for new releases about every 2 days and offers them under **Settings → Updates**. The release notes say whether the theme, the font or the logos changed.
 
 ### Theme changes
 
@@ -134,7 +134,9 @@ There are no versioned releases. Marketplace offers an update whenever `main` ch
 
 ### Font or logo changes
 
-1. Run **Shell Command: ecovolt_update_assets** from **Developer tools → Actions** and check the response shows `returncode: 0`.
+Install the theme update first, so the theme and assets are on the same release.
+
+1. Run **Shell Command: ecovolt_update_assets** from **Developer tools → Actions**. Check the response shows `returncode: 0` and the new release number.
 2. Bump the version number so devices fetch the new files. Browsers keep `/local` files for up to 31 days, and you can't clear the cache on a customer's tablet from here.
    - **Logo changed:** edit the logo card on each dashboard and change both `?v=1` to `?v=2` (then `?v=3` next time, and so on).
    - **Font changed:** in **File editor**, open `configuration.yaml`, change `ecovolt-fonts.js?v=1` to `?v=2`, save, and restart Home Assistant.
@@ -156,7 +158,7 @@ Home Assistant sometimes renames theme variables. After a major HA upgrade, chec
 | Dark mode still uses HA's default colours | Run `frontend.set_theme` with `mode: dark` (step 8). |
 | One user doesn't get the theme | Their profile has a specific theme set. Change **Profile → Theme** to **Backend-selected** or **EcoVolt**. |
 | **Add from link** fails or asks for GitHub | Connect GitHub when prompted. To connect or change the account later, open **Settings → Devices & services → Marketplace → ⋮ → Reconfigure**. If it asks for a **Type**, choose **Theme**. |
-| No EcoVolt update shows up | Marketplace checks this repository about every 2 days. Compare the installed version (a commit) on the EcoVolt repository page with the [latest commit](https://github.com/keteracel/ecovolt-ha-theme/commits/main). |
+| No EcoVolt update shows up | Marketplace checks this repository about every 2 days. Compare the installed version on the EcoVolt repository page in **Settings → Marketplace** with the [latest release](https://github.com/keteracel/ecovolt-ha-theme/releases/latest). |
 
 ## Uninstall
 
